@@ -1,0 +1,12 @@
+#imgsup{
+    width: 100%;
+    height:40vh;
+    object-fit: cover;
+    position: fixed top;
+}
+
+.carousel-inner{
+    height: 90vh;
+}
+
+  
