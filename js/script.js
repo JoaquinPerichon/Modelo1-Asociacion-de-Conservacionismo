@@ -1,11 +1,11 @@
-// $(document).ready(function(){
-//     var altura = $('.navbar').offset().top;
+ $(document).ready(function(){
+     var altura = $('.menu').offset().top;
 
-//     $(window).on('scroll', function(){
-//     if($(window).scrollTop() > altura){
-//         $('.navbar').addClass('navbar-fixed');
-//     }else{
-//         $('.navbar').removeClass('navbar-fixed');
-//     }
-//    });
-// });
+     $(window).on('scroll', function(){
+     if($(window).scrollTop() > altura){
+         $('.menu').addClass('menu-fixed');
+     }else{
+         $('.menu').removeClass('menu-fixed');
+     }
+    });
+ });

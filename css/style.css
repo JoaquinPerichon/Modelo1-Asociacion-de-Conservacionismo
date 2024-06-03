@@ -4,21 +4,20 @@
     object-fit: cover;
     position: fixed top;
     top: 0;
-    z-index: 0;
+    
 }
 
-.carousel-inner{
+/* .carousel-inner{
     height: 90vh;
     image-rendering: auto;
     z-index: 1;
-}
+} */
 
  #logo{
  width: 30vh;
  position: absolute;
  top: 2vh;
  right: 3%;
- z-index: 2;
  filter: drop-shadow(0px 0px 6px rgb(255, 255, 255));
 } 
  
@@ -34,9 +33,9 @@
     }
 }
 
-.navbar {
+/* .navbar {
     z-index: 3;
-} 
+}  */
 
 #acdyccc{
     position: absolute;
@@ -48,10 +47,12 @@
     padding: 3% 3% 0 3%;
     max-width: 70%;
     filter: drop-shadow(0 0px 6px rgb(0, 0, 0));
-    
-    
-
 }
 
-
+.menu-fixed{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
 
