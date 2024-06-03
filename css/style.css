@@ -7,11 +7,11 @@
     
 }
 
-/* .carousel-inner{
+ .carousel-inner{
     height: 90vh;
     image-rendering: auto;
     z-index: 1;
-} */
+} 
 
  #logo{
  width: 30vh;
@@ -33,9 +33,9 @@
     }
 }
 
-/* .navbar {
+ .navbar {
     z-index: 3;
-}  */
+}  
 
 #acdyccc{
     position: absolute;
