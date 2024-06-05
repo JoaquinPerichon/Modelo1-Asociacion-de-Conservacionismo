@@ -30,7 +30,7 @@
                         <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse" id="navbarResponsive" style="">
+            <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Novedades</a></li>
@@ -46,6 +46,8 @@
       <div class="card m-3 p-3">
     <p class="text-center fs-5 lh-base">La Asociación de Caza Deportiva y Conservacionismo Curuzú Cuatiá, está conformada por grupo de amigos que unimos voluntades con el OBJETO de velar por los derechos de los Cazadores Deportivos en general, colaborar con las autoridades de control y aplicación de las normas que regulan la actividad, en pos del conservacionismo y la sustentable explotación de los recursos naturales de la Provincia. -</p>
       </div>
+
+      <div class="py-5 shadow-sm"></div>
 
     <!-- carrucel de fotos -->
     <div id="carouselExampleIndicators" class="carousel slide">
@@ -75,12 +77,16 @@
         </button>
       </div>
 </main>
-<footer class="footer bg-dark text-light">
-    <div class="container">
-        <div class="row">
-            <!-- Apartado de contacto -->
-            <div class="col-md-6">
+
+<div class="py-5 shadow-sm"></div>
+
+    <footer class="footer bg-dark text-light ">
+    <div class="container-fluid mx-5">
+        <div class="row justify-content-center">
+            <!-- contacto -->
+            <div class="col-md-4">
                 <section id="contacto" class="mt-5">
+                    <img id= "logoFooter" src="img/logoACDyCCC.png" alt="Logo ACDyCCC" width="100" height="100">
                     <h2>Contacto</h2>
                     <p>Ponte en contacto con nosotros.</p>
                     <form>
@@ -101,37 +107,39 @@
                 </section>
             </div>
 
-            <!-- Apartado de novedades -->
-            <div class="col-md-6 mt-5">
-                <h5>Novedades</h5>
-                <ul class="list-unstyled">
-                    <!-- Reemplaza los enlaces con los títulos de las noticias más recientes -->
-                    <li><a href="#">Título de la noticia 1</a></li>
-                    <li><a href="#">Título de la noticia 2</a></li>
-                    <li><a href="#">Título de la noticia 3</a></li>
-                    <!-- Agrega más noticias si es necesario -->
-                </ul>
-            </div>
-        </div>
-
-        <!-- Redes sociales -->
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <h5>Redes Sociales</h5>
-                <!-- Agrega aquí los íconos o enlaces a tus redes sociales -->
+            <!-- Socios -->
+            <div id="footer" class="col-md-4 mt-5">
+                <h5>Hazte Socio</h5>
+                <p>Haz click aquí para más información.</p>
+                <a href="#" class="btn btn-primary">Saber Más</a>
+            
+                <h5 class="mt-5">Redes Sociales</h5>
                 <ul class="list-inline">
                     <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <!-- Agrega más redes sociales si es necesario -->
+                </ul>
+            </div>
+
+            <!-- noticias -->
+            <div id="footer" class="col-md-4 mt-5">
+                <h5>Noticias Recientes</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Título de la noticia 1</a></li>
+                    <li><a href="#">Título de la noticia 2</a></li>
+                    <li><a href="#">Título de la noticia 3</a></li>
+                    
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="container text-center">
-        <span class="text-muted pb-4">© 2024 LaEsquinaTeam. Todos los derechos reservados.</span>
+
+       
+        <div class="pb-4 container text-center">
+            <span class="text-muted pb-4">© 2024 LaEsquinaTeam. Todos los derechos reservados.</span>
+        </div>
     </div>
 </footer>
+
 
 <!-- Bootstrap JavaScript Libraries -->
 <body>

@@ -8,7 +8,7 @@
 }
 
  .carousel-inner{
-    height: 90vh;
+   
     image-rendering: auto;
     z-index: 1;
 } 
@@ -54,7 +54,22 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    .container{
-        height: 45px;
-    }
+   
+}
+
+footer {
+    background-image: url('../img/footer2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#logoFooter{
+    filter: drop-shadow(0px 0px 6px rgb(255, 255, 255));
+    margin-left: 20%;
+    margin-bottom: 10%;
+}
+
+#footer{
+    padding-top: 15%;
 }
