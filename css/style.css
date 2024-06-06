@@ -13,7 +13,7 @@ body{
 
 .carousel-item img {
     height: 70vh;
-    /* object-fit: cover; */
+    object-fit: cover;
   }
   
   .carousel-control-prev,
@@ -65,6 +65,7 @@ body{
     padding: 3% 3% 0 3%;
     max-width: 70%;
     filter: drop-shadow(0 0px 6px rgb(0, 0, 0));
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
 
 .card{
@@ -91,6 +92,7 @@ footer {
     background-position: center center;
     background-size: cover;
     filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+    text-shadow: 0px 0px 5px black;
 }
 
 #logoFooter{
