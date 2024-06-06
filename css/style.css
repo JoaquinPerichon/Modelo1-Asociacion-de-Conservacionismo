@@ -11,18 +11,25 @@ body{
     filter: blur(2px);
 }
 
-.carousel-item{
-    height: 70VH;
-}
-
+.carousel-item img {
+    height: 70vh;
+    /* object-fit: cover; */
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .carousel-indicators {
+    bottom: 0;
+  }
  .carousel-inner{
     filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
     image-rendering: auto;
     z-index: 1;
 } 
-#carouselExampleIndicators{
-    height: 70VH;
-}
 
  #logo{
  width: 30vh;
