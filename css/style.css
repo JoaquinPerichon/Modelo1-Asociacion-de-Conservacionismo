@@ -20,6 +20,9 @@ body{
     image-rendering: auto;
     z-index: 1;
 } 
+#carouselExampleIndicators{
+    height: 70VH;
+}
 
  #logo{
  width: 30vh;
