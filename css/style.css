@@ -1,14 +1,22 @@
+body{
+    background-color: #A58E74;
+}
+
 #imgsup{
     width: 100%;
     height:35vh;
     object-fit: cover;
     position: fixed top;
     top: 0;
-    
+    filter: blur(2px);
+}
+
+.carousel-item{
+    height: 70VH;
 }
 
  .carousel-inner{
-   
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
     image-rendering: auto;
     z-index: 1;
 } 
@@ -49,11 +57,21 @@
     filter: drop-shadow(0 0px 6px rgb(0, 0, 0));
 }
 
+.card{
+ background-color: #424530;
+ filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+}
+.navbar{
+    background-color: #424530;
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+}
+
 .menu-fixed{
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
    
 }
 
@@ -62,6 +80,7 @@ footer {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
 }
 
 #logoFooter{
@@ -76,4 +95,5 @@ footer {
 
 #contacto{
     margin-left: 4vw;
+    margin-right: 4vw;
 }
