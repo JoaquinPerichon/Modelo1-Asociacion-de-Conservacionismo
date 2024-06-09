@@ -71,10 +71,15 @@ body{
 .card{
  background-color: #424530;
  filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+ text-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
+
+
+
 .navbar{
     background-color: #424530;
     filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
 
 .menu-fixed{
@@ -103,9 +108,44 @@ footer {
 
 #footer{
     padding-top: 15%;
+    
 }
 
 #contacto{
     margin-left: 4vw;
     margin-right: 4vw;
 }
+
+#contactoNormativa{
+    background: #424530 ;
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+
+}
+
+#socios{
+    background: #424530 ;
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+    text-shadow: 0px 0px 5px black;
+}
+
+.btn{
+    background-color: #E09132;
+    border-color: #E09132;
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.514));
+}
+
+a{
+    color: #E09132;
+}
+
+.activo {
+    color: #E09132 !important;
+}
+
+.footer-card {
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 20px; 
+    border-radius: 5px;
+}
+
