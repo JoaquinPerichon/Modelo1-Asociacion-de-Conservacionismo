@@ -33,64 +33,85 @@
             </button>
             <div class="navbar-collapse collapse h5" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
-                    <li class="nav-item"><a class="activo nav-link" href="normativa.html">Normativa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="socios.html">Socios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades.php">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="normativa.php">Normativa</a></li>
+                    <li class="nav-item"><a class="activo nav-link" href="socios.php">Socios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tienda.php">Tienda</a></li>
                 </ul>
             </div>
         </div>
     </nav>
   </div>
 
-  <div class="card container my-5 text-center">
-    <p class="h5 mt-3">Al hacer click en la imagen que se encuentra debajo, serás redirigido a la pagina de GCL-Corrientes donde encontrarás el reglamento de pesca y caza, así como las disposiciones legales vigentes. 
 
-        <p class="h4">¡Haz clic en la imagen de abajo para más información!</p></p>
 
-  </div>
-
-  <div class="container card my-5">
-    <div class="row">
-        <div class="col-md-12">
-            <a href="https://www.licenciasrecursosnaturales.gob.ar/" target="_blank">
-                <img class="m-1 pe-2 img-fluid" src="img/GCL.png" alt="" width="100%" height="100%">
-            </a>
-        </div>
-    </div>
-</div>
-
-<div id="contactoNormativa" class="container-fluid px-5 py-5">
-    <div class="row mx-4">
-        <div class="col-md-6 my-auto">
-            <p class="h1"><strong>Para un mejor asesoramiento solicite información sin compromiso</strong></p>
-        </div>
-        <div class="col-md-6 ">
-            <form>
+<!-- Socios -->
+<div id="socios" class="container-fluid mt-5 text-center  ">
+    <h5 class="py-4"><strong>Formulario de Registro de Socios</strong></h5>
+    <form id="sociosForm">
+        <div class="row">
+            <div class="col-md-6 px-5">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                    <input type="text" class="form-control" id="nombre" required>
                 </div>
+                <div class="form-group pt-3">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" required>
+                </div>
+                <div class="form-group pt-3">
+                    <label for="dni">DNI</label>
+                    <input type="number" class="form-control" id="dni" required>
+                </div>
+                <div class="form-group pt-3">
+                    <label for="sexo">Sexo</label>
+                    <select class="form-control" id="sexo" required>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                    </select>
+                </div>
+                <div class="form-group pt-3">
+                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" required>
+                </div>
+                <div class="form-group pt-3">
+                    <label for="telefono">Número de celular</label>
+                    <input type="tel" class="form-control" id="telefono" required>
+                </div>
+            </div>
+            <div class="col-md-6 px-5">
                 <div class="form-group">
-                    <label for="nombre">Asunto</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Asunto">
+                    <label for="provincia">Provincia</label>
+                    <input type="text" class="form-control" id="provincia" required>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
+                <div class="form-group pt-3">
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" class="form-control" id="ciudad" required>
                 </div>
-                <div class="form-group">
-                    <label for="mensaje">Mensaje</label>
-                    <textarea class="form-control" id="mensaje" rows="3" placeholder="Escriba su mensaje"></textarea>
+                <div class="form-group pt-3">
+                    <label for="localidad">Localidad</label>
+                    <input type="text" class="form-control" id="localidad" required>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">Enviar Mensaje</button>
-            </form>
+                <div class="form-group pt-3">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" required>
+                </div>
+                <div class="form-group pt-3">
+                    <label for="correo">Correo</label>
+                    <input type="email" class="form-control" id="correo" required>
+                </div>
+                <div class="form-group pt-3">
+                    <label for="telefono">Número de Teléfono </label>
+                    <input type="tel" class="form-control" id="telefono" required>
+                </div>
+            </div>
         </div>
-    </div>
+        <button type="submit" class="btn btn-primary my-4">Registrar</button>
+    </form>
 </div>
 
-
+  
 
 <!-- footer -->
 <div class="py-4 shadow-sm"></div>
@@ -125,7 +146,7 @@
             <!-- Socios -->
            <div id="footer" class="col-md-4 mt-5 text-center">
     <h5>Hazte Socio</h5>
-    <p>Haz <a href="socios.html">click aquí</a> para más información.</p>
+    <p>Haz <a href="socios.php">click aquí</a> para más información.</p>
     
 
     <h5 class="mt-5">Redes Sociales</h5>

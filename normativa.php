@@ -33,16 +33,62 @@
             </button>
             <div class="navbar-collapse collapse h5" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="normativa.html">Normativa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="socios.html">Socios</a></li>
-                    <li class="nav-item"><a class="activo nav-link" href="tienda.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades.php">Novedades</a></li>
+                    <li class="nav-item"><a class="activo nav-link" href="normativa.php">Normativa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="socios.php">Socios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tienda.php">Tienda</a></li>
                 </ul>
             </div>
         </div>
     </nav>
   </div>
+
+  <div class="card container my-5 text-center">
+    <p class="h5 mt-3">Al hacer click en la imagen que se encuentra debajo, serás redirigido a la pagina de GCL-Corrientes donde encontrarás el reglamento de pesca y caza, así como las disposiciones legales vigentes. 
+
+        <p class="h4">¡Haz clic en la imagen de abajo para más información!</p></p>
+
+  </div>
+
+  <div class="container card my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="https://www.licenciasrecursosnaturales.gob.ar/" target="_blank">
+                <img class="m-1 pe-2 img-fluid" src="img/GCL.png" alt="" width="100%" height="100%">
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="contactoNormativa" class="container-fluid px-5 py-5">
+    <div class="row mx-4">
+        <div class="col-md-6 my-auto">
+            <p class="h1"><strong>Para un mejor asesoramiento solicite información sin compromiso</strong></p>
+        </div>
+        <div class="col-md-6 ">
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Asunto</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Asunto">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea class="form-control" id="mensaje" rows="3" placeholder="Escriba su mensaje"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 
@@ -79,7 +125,7 @@
             <!-- Socios -->
            <div id="footer" class="col-md-4 mt-5 text-center">
     <h5>Hazte Socio</h5>
-    <p>Haz <a href="socios.html">click aquí</a> para más información.</p>
+    <p>Haz <a href="socios.php">click aquí</a> para más información.</p>
     
 
     <h5 class="mt-5">Redes Sociales</h5>

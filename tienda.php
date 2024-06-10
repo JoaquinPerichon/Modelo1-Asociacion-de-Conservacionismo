@@ -21,9 +21,6 @@
     <h1 id="acdyccc">Asociación de Caza Deportiva y Conservacionismo Curuzú Cuatiá</h1>
     </div>
     <!-- La navbar -->
-
-    
-
     <div class="menu">
       <nav class="navbar navbar-expand-lg navbar-light " id="mainNav">
         <div class="container px-4 px-lg-5">
@@ -33,85 +30,96 @@
             </button>
             <div class="navbar-collapse collapse h5" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="normativa.html">Normativa</a></li>
-                    <li class="nav-item"><a class="activo nav-link" href="socios.html">Socios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades.php">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="normativa.php">Normativa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="socios.php">Socios</a></li>
+                    <li class="nav-item"><a class="activo nav-link" href="tienda.php">Tienda</a></li>
                 </ul>
             </div>
         </div>
     </nav>
   </div>
 
+<?php
+
+// Cargar el documento HTML externo
+$url = 'https://www.todoaventurashop.com.ar/hot-sale/'; 
+$html = file_get_contents($url);
+
+// Crear un objeto DOM para analizar el HTML
+$dom = new DOMDocument();
+@$dom->loadHTML($html);
+
+// Seleccionar los elementos con la clase "item"
+$items = $dom->getElementsByTagName('div');
+
+// Recorrer los elementos
+if ($items->length > 0) {
+    echo '<div class="container">';
+    echo '<div class="row">';
+
+    foreach ($items as $item) {
+        if ($item->getAttribute('class') === 'item') {
+            
+
+           // nombre
+$divElements = $item->getElementsByTagName('div');
+foreach ($divElements as $divElement) {
+    if ($divElement->hasAttribute('class') && strpos($divElement->getAttribute('class'), 'js-item-name')!== false) {
+        $productName = $divElement->nodeValue;
+        break;
+    }
+}
+
+       // imagen
+       $xpath = new DOMXPath($dom);
+$lastImage = $xpath->query('//img[contains(@srcset, "1024w")]')->item(0);
+
+if ($lastImage) {
+    $productImage = $lastImage->getAttribute('srcset');
+}
+$imgElements = $item->getElementsByTagName('img');
+$productImage = null;
+
+foreach ($imgElements as $imgElement) {
+    $srcsetAttribute = $imgElement->getAttribute('srcset');
+    $srcsetArray = explode(',', $srcsetAttribute);
+
+    foreach ($srcsetArray as $srcsetItem) {
+        if (strpos($srcsetItem, '1024w')!== false) {
+            $productImage = trim($srcsetItem);
+            break 2; // Break both loops once the desired srcset item is found
+        }
+    }
+}
 
 
-<!-- Socios -->
-<div id="socios" class="container-fluid mt-5 text-center  ">
-    <h5 class="py-4"><strong>Formulario de Registro de Socios</strong></h5>
-    <form id="sociosForm">
-        <div class="row">
-            <div class="col-md-6 px-5">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="dni">DNI</label>
-                    <input type="number" class="form-control" id="dni" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="sexo">Sexo</label>
-                    <select class="form-control" id="sexo" required>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                    </select>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="fechaNacimiento" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="telefono">Número de celular</label>
-                    <input type="tel" class="form-control" id="telefono" required>
-                </div>
-            </div>
-            <div class="col-md-6 px-5">
-                <div class="form-group">
-                    <label for="provincia">Provincia</label>
-                    <input type="text" class="form-control" id="provincia" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="ciudad">Ciudad</label>
-                    <input type="text" class="form-control" id="ciudad" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="localidad">Localidad</label>
-                    <input type="text" class="form-control" id="localidad" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="direccion">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="correo">Correo</label>
-                    <input type="email" class="form-control" id="correo" required>
-                </div>
-                <div class="form-group pt-3">
-                    <label for="telefono">Número de Teléfono </label>
-                    <input type="tel" class="form-control" id="telefono" required>
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary my-4">Registrar</button>
-    </form>
-</div>
+            // boton link
+            $aElements = $item->getElementsByTagName('a');
+            if ($aElements->length > 0) {
+                $productUrl = $aElements[0]->getAttribute('href');
+            }
 
-  
+            // cards
+            echo '<div class="col-md-4 my-3">';
+            echo '<div class="card">';
+            echo '<img src="'. $productImage. '" class="card-img-top" alt="'. $productName. '">';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">'. $productName. '</h5>';
+            echo '<a href="'. $productUrl. '" class="btn btn-primary" target="_blank">Ver más</a>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+    }
+
+    echo '</div>';
+    echo '</div>';
+}
+
+
+?>
 
 <!-- footer -->
 <div class="py-4 shadow-sm"></div>
@@ -146,7 +154,7 @@
             <!-- Socios -->
            <div id="footer" class="col-md-4 mt-5 text-center">
     <h5>Hazte Socio</h5>
-    <p>Haz <a href="socios.html">click aquí</a> para más información.</p>
+    <p>Haz <a href="socios.php">click aquí</a> para más información.</p>
     
 
     <h5 class="mt-5">Redes Sociales</h5>
@@ -179,7 +187,7 @@
 
 <!-- Bootstrap JavaScript Libraries -->
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0T6N6jJ0tK+0K06YB0U6J0tK+0K06YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="js/script.js"></script>
  

@@ -33,55 +33,36 @@
             </button>
             <div class="navbar-collapse collapse h5" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="activo nav-link" href="index.html">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="normativa.html">Normativa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="socios.html">Socios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Nosotros</a></li>
+                    <li class="nav-item"><a class="activo nav-link" href="novedades.php">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="normativa.php">Normativa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="socios.php">Socios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tienda.php">Tienda</a></li>
                 </ul>
             </div>
         </div>
     </nav>
   </div>
 
-      <div class="card m-3 p-3 mt-5">
-    <p class="text-center fs-5 lh-base">La Asociación de Caza Deportiva y Conservacionismo Curuzú Cuatiá, está conformada por grupo de amigos que unimos voluntades con el OBJETO de velar por los derechos de los Cazadores Deportivos en general, colaborar con las autoridades de control y aplicación de las normas que regulan la actividad, en pos del conservacionismo y la sustentable explotación de los recursos naturales de la Provincia. -</p>
+ <div class="container col-xxl-8 card m-3 p-3 mt-5 mx-auto">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6 mx-auto d-flex justify-content-center">
+        <img src="img/footer.jpg" class="img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
       </div>
-
-      <div class="py-3 shadow-sm"></div>
-
-    <!-- carrucel de fotos -->
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
+        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Ver más</button>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/carrucel1.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/carrucel2.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/carrucel3.jpg" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-</main>
+    </div>
+  </div> 
 
+<!-- footer -->
 <div class="py-4 shadow-sm"></div>
 
-    <footer class="footer bg-dark text-light ">
+    <footer class="footer bg-dark text-light">
     <div class="footer-card container-fluid">
         <div class="row justify-content-center">
             <!-- contacto -->
@@ -111,7 +92,7 @@
             <!-- Socios -->
            <div id="footer" class="col-md-4 mt-5 text-center">
     <h5>Hazte Socio</h5>
-    <p>Haz <a href="socios.html">click aquí</a> para más información.</p>
+    <p>Haz <a href="socios.php">click aquí</a> para más información.</p>
     
 
     <h5 class="mt-5">Redes Sociales</h5>
