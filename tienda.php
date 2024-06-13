@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.3.3 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/logoACDyCCC.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="shortcut icon" href="img/logoACDyCCC.png" />
 </head>
 <body>
 <header>
@@ -41,7 +41,7 @@
     </nav>
   </div>
 
-<?php
+  <?php
 
 // Cargar el documento HTML externo
 $url = 'https://www.todoaventurashop.com.ar/hot-sale/'; 
@@ -62,38 +62,45 @@ if ($items->length > 0) {
     foreach ($items as $item) {
         if ($item->getAttribute('class') === 'item') {
             
+            // nombre
+            $divElements = $item->getElementsByTagName('div');
+            foreach ($divElements as $divElement) {
+                if ($divElement->hasAttribute('class') && strpos($divElement->getAttribute('class'), 'js-item-name')!== false) {
+                    $productName = $divElement->nodeValue;
+                    break;
+                }
+            }
 
-           // nombre
-$divElements = $item->getElementsByTagName('div');
-foreach ($divElements as $divElement) {
-    if ($divElement->hasAttribute('class') && strpos($divElement->getAttribute('class'), 'js-item-name')!== false) {
-        $productName = $divElement->nodeValue;
-        break;
-    }
-}
-
-       // imagen
-       $xpath = new DOMXPath($dom);
-$lastImage = $xpath->query('//img[contains(@srcset, "1024w")]')->item(0);
-
-if ($lastImage) {
-    $productImage = $lastImage->getAttribute('srcset');
-}
-$imgElements = $item->getElementsByTagName('img');
-$productImage = null;
-
-foreach ($imgElements as $imgElement) {
-    $srcsetAttribute = $imgElement->getAttribute('srcset');
-    $srcsetArray = explode(',', $srcsetAttribute);
-
-    foreach ($srcsetArray as $srcsetItem) {
-        if (strpos($srcsetItem, '1024w')!== false) {
-            $productImage = trim($srcsetItem);
-            break 2; // Break both loops once the desired srcset item is found
-        }
-    }
-}
-
+            // imagen
+            $productImage = null;
+            // Seleccionar el elemento img con srcset que contiene "1024w"
+            $xpath = new DOMXPath($dom);
+            $imgElements = $xpath->query('//a/img[contains(@srcset, "1024w")]');
+            if ($imgElements->length > 0) {
+                $imgSrc = $imgElements[0]->getAttribute('srcset');
+                // Generar una ruta de archivo única y segura para la imagen descargada
+                $imagePath = 'img/'. uniqid(). '.jpg';
+                
+                // Descargar la imagen
+                $imageContent = file_get_contents($imgSrc);
+                
+                // Guardar la imagen en un archivo local
+                file_put_contents($imagePath, $imageContent);
+                
+                // Utilizar la ruta local de la imagen en la card
+                $productImage = $imagePath;
+                
+                // Opcionalmente, puede utilizar la biblioteca GD para manipular la imagen
+                // Aquí se muestra un ejemplo de cómo redimensionar la imagen a 200x200
+                $image = imagecreatefromjpeg($productImage);
+                $width = 200;
+                $height = 200;
+                $thumb = imagecreatetruecolor($width, $height);
+                imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, imagesx($image), imagesy($image));
+                imagejpeg($thumb, $productImage, 90);
+                imagedestroy($image);
+                imagedestroy($thumb);
+            }
 
             // boton link
             $aElements = $item->getElementsByTagName('a');
@@ -120,6 +127,7 @@ foreach ($imgElements as $imgElement) {
 
 
 ?>
+
 
 <!-- footer -->
 <div class="py-4 shadow-sm"></div>
@@ -187,10 +195,8 @@ foreach ($imgElements as $imgElement) {
 
 <!-- Bootstrap JavaScript Libraries -->
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0T6N6jJ0tK+0K06YB0U6J0tK+0K06YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="js/script.js"></script>
- 
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

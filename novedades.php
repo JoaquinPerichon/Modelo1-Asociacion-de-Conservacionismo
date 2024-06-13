@@ -1,3 +1,9 @@
+<?php 
+include("config/config.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
 <head>
@@ -43,8 +49,63 @@
         </div>
     </nav>
   </div>
+ 
 
- <div class="container col-xxl-8 card m-3 p-3 mt-5 mx-auto">
+  <div id="login" class="container col-md-4 mt-5">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#loginCollapse" aria-expanded="false" aria-controls="loginCollapse">
+        Iniciar Sesión
+    </button>
+
+    <div class="collapse" id="loginCollapse">
+        <div class="card card-body mt-3">
+            <form action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+ <?php
+  // Obtiene las noticias de la base de datos
+$sql = "SELECT * FROM noticias ORDER BY fecha DESC";
+$result = $conexion->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '
+        <div class="container col-xxl-8 card m-3 p-3 mt-5 mx-auto">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6 mx-auto d-flex justify-content-center">
+                    <img src="'. $row['image']. '" class="img-fluid" alt="Noticia" width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">'. $row['title']. '</h1>
+                    <p class="lead">'. $row['content']. '</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Leer Más</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ';
+    }
+} else {
+    echo "No hay noticias disponibles";
+}
+
+$conexion->close();
+?>
+
+ <!-- <div class="container col-xxl-8 card m-3 p-3 mt-5 mx-auto">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
       <div class="col-10 col-sm-8 col-lg-6 mx-auto d-flex justify-content-center">
         <img src="img/footer.jpg" class="img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
@@ -57,7 +118,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>  -->
 
 <!-- footer -->
 <div class="py-4 shadow-sm"></div>
