@@ -15,6 +15,8 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
         exit;
     } else {
         echo 'Nombre de Usuario o Contraseña incorrectos';
+        header('Location: novedades.php');
+        exit;
     }
 }
 ?>

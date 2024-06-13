@@ -1,14 +1,26 @@
-<?php 
+<?php
 include("config/config.php");
 
-session_start();
+// Obtener el ID de la noticia que se va a editar
+$id = $_POST['id'];
 
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']!== true) {
-    header('Location: login.php');
-    exit;
-}
+// Obtener los detalles de la noticia de la base de datos
+$sql = "SELECT * FROM noticias WHERE id = $id";
+$result = $conexion->query($sql);
+$row = $result->fetch_assoc();
+
+// Obtener los valores del formulario
+$title = $_POST['title'];
+$content = $_POST['content'];
+
+// Actualizar la noticia en la base de datos
+$update_sql = "UPDATE noticias SET titulo = '$title', contenido = '$content' WHERE id = $id";
+$update_result = $conexion->query($update_sql);
+
+// Redirigir al usuario a la página de noticias
+header("Location: novedades.php");
+exit;
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
@@ -45,8 +57,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']!== true) {
             </button>
             <div class="navbar-collapse collapse h5" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Nosotros</a></li>
-                    <li class="nav-item"><a class="activo nav-link" href="novedades.php">Novedades</a></li>
+                    <li class="nav-item"><a class="activo nav-link" href="index.php">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="novedades.php">Novedades</a></li>
                     <li class="nav-item"><a class="nav-link" href="normativa.php">Normativa</a></li>
                     <li class="nav-item"><a class="nav-link" href="socios.php">Socios</a></li>
                     <li class="nav-item"><a class="nav-link" href="tienda.php">Tienda</a></li>
@@ -55,81 +67,28 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']!== true) {
         </div>
     </nav>
   </div>
- 
-
-  <div id="login" class="container col-md-4 mt-5">
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#loginCollapse" aria-expanded="false" aria-controls="loginCollapse">
-        Iniciar Sesión
-    </button>
-
-    <div class="collapse" id="loginCollapse">
-        <div class="card card-body mt-3">
-            <form action="login.php" method="POST">
-                <div class="form-group">
-                    <label for="username">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-            </form>
+  <div class="card container col-md-6 mt-5 py-3">
+    <h1>Actualizar Noticia</h1>
+    <form action="editar_noticia.php?id=<?php echo $row['id'];?>" method="POST">
+        <input type="hidden" name="id" value="<?php echo $row['id'];?>">
+        <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" name="title" value="<?php echo $row['titulo'];?>">
         </div>
-    </div>
+        <div class="form-group">
+            <label for="content">Contenido</label>
+            <textarea class="form-control" id="content" name="content" rows="3"><?php echo $row['contenido'];?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Imagen</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
 </div>
-
-
- <?php
-  // Obtiene las noticias de la base de datos
-$sql = "SELECT * FROM noticias ORDER BY fecha DESC";
-$result = $conexion->query($sql);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo '
-        <div class="container col-xxl-8 card m-3 p-3 mt-5 mx-auto">
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div class="col-10 col-sm-8 col-lg-6 mx-auto d-flex justify-content-center">
-                    <img src="'. $row['imagen']. '" class="img-fluid" alt="Noticia" width="700" height="500" loading="lazy">
-                </div>
-                <div class="col-lg-6">
-                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">'. $row['titulo']. '</h1>
-                    <p class="lead">'. $row['contenido']. '</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Leer Más</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        ';
-    }
-} else {
-    echo "No hay noticias disponibles";
-}
-
-$conexion->close();
-?>
-
- <!-- <div class="container col-xxl-8 card m-3 p-3 mt-5 mx-auto">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6 mx-auto d-flex justify-content-center">
-        <img src="img/footer.jpg" class="img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Ver más</button>
-        </div>
-      </div>
-    </div>
-  </div>  -->
-
-<!-- footer -->
 <div class="py-4 shadow-sm"></div>
 
-    <footer class="footer bg-dark text-light">
+    <footer class="footer bg-dark text-light ">
     <div class="footer-card container-fluid">
         <div class="row justify-content-center">
             <!-- contacto -->
