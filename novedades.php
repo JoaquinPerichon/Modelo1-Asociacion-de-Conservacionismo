@@ -1,12 +1,7 @@
-<?php 
+<?php
 include("config/config.php");
 
-session_start();
 
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']!== true) {
-    header('Location: login.php');
-    exit;
-}
 ?>
 
 
@@ -97,7 +92,7 @@ if ($result->num_rows > 0) {
                     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">'. $row['titulo']. '</h1>
                     <p class="lead">'. $row['contenido']. '</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Leer Más</button>
+                        <a href="'. $row['url']. '" target="_blank" class="btn btn-outline-secondary btn-lg px-4">Leer Más</a>
                     </div>
                 </div>
             </div>
@@ -111,20 +106,6 @@ if ($result->num_rows > 0) {
 $conexion->close();
 ?>
 
- <!-- <div class="container col-xxl-8 card m-3 p-3 mt-5 mx-auto">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6 mx-auto d-flex justify-content-center">
-        <img src="img/footer.jpg" class="img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Ver más</button>
-        </div>
-      </div>
-    </div>
-  </div>  -->
 
 <!-- footer -->
 <div class="py-4 shadow-sm"></div>

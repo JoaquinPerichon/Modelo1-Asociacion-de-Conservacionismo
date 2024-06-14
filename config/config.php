@@ -6,9 +6,9 @@
 
 // Parámetros de conexión a la base de datos
 $host = "localhost"; 
-$usuario = "root"; // $usuario = "usuario";
-$contraseña = ""; // $contraseña = "contraseña";
-$base_de_datos = "acdyccc_database";
+$usuario = "id22314867_acdyccc"; // $usuario = "usuario";
+$contraseña = "22-ACDyCCC-14"; // $contraseña = "contraseña";
+$base_de_datos = "id22314867_acdyccc";
 
 // Crear una nueva conexión a la base de datos
 $conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);

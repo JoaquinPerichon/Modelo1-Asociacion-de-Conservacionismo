@@ -69,7 +69,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in']!== true) {
                 <label for="image">Imagen</label>
                 <input type="file" class="form-control-file" id="image" name="image" required>
             </div>
-            <button type="submit" class="btn btn-primary">Subir Noticia</button>
+            <div class="form-group">
+                <label for="title">Url</label>
+                <input type="text" class="form-control" id="url" name="url" required>
+            </div>
+            <button type="submit" class="btn btn-primary m-2">Subir Noticia</button>
+            
         </form>
     </div>
 
