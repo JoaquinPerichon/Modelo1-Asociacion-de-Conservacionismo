@@ -14,7 +14,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
         header('Location: admin.php');
         exit;
     } else {
-        header('Location: novedades.php');
+        echo "Invalid username or password.";
         exit;
     }
 }

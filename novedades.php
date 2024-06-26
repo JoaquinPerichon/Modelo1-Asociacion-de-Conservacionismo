@@ -52,27 +52,7 @@ include("config/config.php");
   </div>
  
 
-  <div id="login" class="container col-md-4 mt-5">
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#loginCollapse" aria-expanded="false" aria-controls="loginCollapse">
-        Iniciar Sesión
-    </button>
-
-    <div class="collapse" id="loginCollapse">
-        <div class="card card-body mt-3">
-            <form action="login.php" method="POST">
-                <div class="form-group">
-                    <label for="username">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-            </form>
-        </div>
-    </div>
-</div>
+  
 
 
  <?php

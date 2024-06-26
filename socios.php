@@ -53,63 +53,112 @@ include("config/config.php");
 
 
 <!-- Socios -->
+
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $dni = $_POST["dni"];
+    $sexo = $_POST["sexo"];
+    $fechaNacimiento = $_POST["fecha_nacimiento"];
+    $celular = $_POST["numero_celular"];
+    $telefono = $_POST["numero_telefono"];
+    $provincia = $_POST["provincia"];
+    $ciudad = $_POST["ciudad"];
+    $localidad = $_POST["localidad"];
+    $direccion = $_POST["direccion"];
+    $correo = $_POST["correo"];
+
+    $sql = "SELECT * FROM socios WHERE dni = '$dni'";
+$result = $conexion->query($sql);
+
+// Si el resultado tiene al menos un registro, el DNI ya existe
+if ($result->num_rows > 0) {
+  echo "El DNI ingresado ya se encuentra registrado.";
+} else {
+  
+
+    $sql = "INSERT INTO socios (nombre, apellido, dni, sexo, fecha_nacimiento, numero_celular, numero_telefono, provincia, ciudad, localidad, direccion, correo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    
+    $stmt = $conexion->prepare($sql);
+
+    
+    $stmt->bind_param("ssssssssssss", $nombre, $apellido, $dni, $sexo, $fechaNacimiento, $celular, $telefono, $provincia, $ciudad, $localidad, $direccion, $correo);
+
+    
+    if ($stmt->execute()) {
+        echo "Registro exitoso!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    
+    $stmt->close();
+    $conexion->close();
+}
+} 
+?>
+
 <div id="socios" class="container-fluid mt-5 text-center  ">
     <h5 class="py-4"><strong>Formulario de Registro de Socios</strong></h5>
-    <form id="sociosForm">
+    <form id="sociosForm" action="socios.php" method="post">
         <div class="row">
             <div class="col-md-6 px-5">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" required>
+                    <input type="text" class="form-control" id="apellido" name="apellido" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="dni">DNI</label>
-                    <input type="number" class="form-control" id="dni" required>
+                    <input type="number" class="form-control" id="dni" name="dni" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="sexo">Sexo</label>
-                    <select class="form-control" id="sexo" required>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
+                    <select class="form-control" id="sexo" name="sexo" required>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
                     </select>
                 </div>
                 <div class="form-group pt-3">
                     <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="fechaNacimiento" required>
+                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="telefono">Número de celular</label>
-                    <input type="tel" class="form-control" id="telefono" required>
+                    <input type="tel" class="form-control" id="numero_celular" name="numero_celular" required>
                 </div>
             </div>
             <div class="col-md-6 px-5">
                 <div class="form-group">
                     <label for="provincia">Provincia</label>
-                    <input type="text" class="form-control" id="provincia" required>
+                    <input type="text" class="form-control" id="provincia" name="provincia" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="ciudad">Ciudad</label>
-                    <input type="text" class="form-control" id="ciudad" required>
+                    <input type="text" class="form-control" id="ciudad" name="ciudad" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="localidad">Localidad</label>
-                    <input type="text" class="form-control" id="localidad" required>
+                    <input type="text" class="form-control" id="localidad" name="localidad" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="direccion">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" required>
+                    <input type="text" class="form-control" id="direccion" name="direccion" required>
                 </div>
                 <div class="form-group pt-3">
                     <label for="correo">Correo</label>
-                    <input type="email" class="form-control" id="correo" required>
+                    <input type="email" class="form-control" id="correo" name="correo" >
                 </div>
                 <div class="form-group pt-3">
                     <label for="telefono">Número de Teléfono </label>
-                    <input type="tel" class="form-control" id="telefono" required>
+                    <input type="tel" class="form-control" id="numero_telefono" name="numero_telefono" >
                 </div>
             </div>
         </div>

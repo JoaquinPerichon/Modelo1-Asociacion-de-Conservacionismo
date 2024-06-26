@@ -5,10 +5,15 @@
 //  error_reporting(E_ALL);
 
 // Parámetros de conexión a la base de datos
+// $host = "localhost"; 
+// $usuario = "id22314867_acdyccc"; // $usuario = "usuario";
+// $contraseña = "22-ACDyCCC-14"; // $contraseña = "contraseña";
+// $base_de_datos = "id22314867_acdyccc";
+
 $host = "localhost"; 
-$usuario = "id22314867_acdyccc"; // $usuario = "usuario";
-$contraseña = "22-ACDyCCC-14"; // $contraseña = "contraseña";
-$base_de_datos = "id22314867_acdyccc";
+$usuario = "root"; // $usuario = "usuario";
+$contraseña = ""; // $contraseña = "contraseña";
+$base_de_datos = "acdyccc_database";
 
 // Crear una nueva conexión a la base de datos
 $conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);

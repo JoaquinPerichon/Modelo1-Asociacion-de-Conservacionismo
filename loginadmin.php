@@ -1,3 +1,10 @@
+<?php
+include("config/config.php");
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
 <head>
@@ -7,10 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.3.3 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="shortcut icon" href="img/logoACDyCCC.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/logoACDyCCC.png" />
 </head>
 <body>
 <header>
@@ -21,6 +28,9 @@
     <h1 id="acdyccc">Asociación de Caza Deportiva y Conservacionismo Curuzú Cuatiá</h1>
     </div>
     <!-- La navbar -->
+
+    
+
     <div class="menu">
       <nav class="navbar navbar-expand-lg navbar-light " id="mainNav">
         <div class="container px-4 px-lg-5">
@@ -31,91 +41,36 @@
             <div class="navbar-collapse collapse h5" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="novedades.php">Novedades</a></li>
+                    <li class="nav-item"><a class="activo nav-link" href="novedades.php">Novedades</a></li>
                     <li class="nav-item"><a class="nav-link" href="normativa.php">Normativa</a></li>
                     <li class="nav-item"><a class="nav-link" href="socios.php">Socios</a></li>
-                    <li class="nav-item"><a class="activo nav-link" href="tienda.php">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tienda.php">Tienda</a></li>
                 </ul>
             </div>
         </div>
     </nav>
   </div>
 
-  <?php
-
-// Cargar el documento HTML externo
-$url = 'https://www.todoaventurashop.com.ar/ofertas/'; 
-$html = file_get_contents($url);
-
-// Crear un objeto DOM para analizar el HTML
-$dom = new DOMDocument();
-@$dom->loadHTML($html);
-
-// Seleccionar los elementos con la clase "item"
-$items = $dom->getElementsByTagName('div');
-
-// Recorrer los elementos
-if ($items->length > 0) {
-    echo '<div class="container">';
-    echo '<div class="row">';
-
-    foreach ($items as $item) {
-        if ($item->getAttribute('class') === 'item') {
-            
-            // nombre
-            $divElements = $item->getElementsByTagName('div');
-            foreach ($divElements as $divElement) {
-                if ($divElement->hasAttribute('class') && strpos($divElement->getAttribute('class'), 'js-item-name')!== false) {
-                    $productName = $divElement->nodeValue;
-                    break;
-                }
-            }
-
-            // imagen
-            $productImage = null;
-            // Seleccionar el elemento img con srcset que contiene "1024w"
-            $xpath = new DOMXPath($dom);
-            $imgElements = $xpath->query('//a/img[contains(@srcset, "1024w")]');
-            if ($imgElements->length > 0) {
-                $imgSrc = $imgElements[0]->getAttribute('srcset');
-                // Generar una ruta de archivo única y segura para la imagen descargada
-                $imagePath = 'img/'. uniqid(). '.jpg';
-                
-                // Descargar la imagen
-                $imageContent = file_get_contents($imgSrc);
-                
-                // Guardar la imagen en un archivo local
-                file_put_contents($imagePath, $imageContent);
-                
-                // Utilizar la ruta local de la imagen en la card
-                $productImage = $imagePath;
-            }
-
-            // boton link
-            $aElements = $item->getElementsByTagName('a');
-            if ($aElements->length > 0) {
-                $productUrl = $aElements[0]->getAttribute('href');
-            }
-
-            // cards
-            echo '<div class="col-md-4 my-3">';
-            echo '<div class="card">';
-            echo '<img src="'. $productImage. '" class="card-img-top" alt="'. $productName. '">';
-            echo '<div class="card-body">';
-            echo '<h5 class="card-title">'. $productName. '</h5>';
-            echo '<a href="'. $productUrl. '" class="btn btn-primary" target="_blank">Ver más</a>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-        }
-    }
-
-    echo '</div>';
-    echo '</div>';
-}
 
 
-?>
+
+
+    
+        <div class="card card-body mt-3 mx-5">
+            <form action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
+            </form>
+        </div>
+    
+
 
 
 <!-- footer -->
@@ -184,8 +139,10 @@ if ($items->length > 0) {
 
 <!-- Bootstrap JavaScript Libraries -->
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+ 
+</body>
 </body>
 </html>
