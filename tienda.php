@@ -71,24 +71,21 @@ if ($items->length > 0) {
                 }
             }
 
-            // imagen
-            $productImage = null;
-            // Seleccionar el elemento img con srcset que contiene "1024w"
-            $xpath = new DOMXPath($dom);
-            $imgElements = $xpath->query('//a/img[contains(@srcset, "1024w")]');
-            if ($imgElements->length > 0) {
-                $imgSrc = $imgElements[0]->getAttribute('srcset');
-                // Generar una ruta de archivo única y segura para la imagen descargada
-                $imagePath = 'img/'. uniqid(). '.jpg';
-                
-                // Descargar la imagen
-                $imageContent = file_get_contents($imgSrc);
-                
-                // Guardar la imagen en un archivo local
-                file_put_contents($imagePath, $imageContent);
-                
-                // Utilizar la ruta local de la imagen en la card
-                $productImage = $imagePath;
+           // imagen
+            $imgElements = $item->getElementsByTagName('img');
+            foreach ($imgElements as $imgElement) {
+                if ($imgElement->hasAttribute('class') && strpos($imgElement->getAttribute('class'), 'js-item-image') !== false) {
+                    if ($imgElement->hasAttribute('data-srcset')) {
+                        $productImage = $imgElement->getAttribute('data-srcset');
+                        // Extract the actual image URL from the data-srcset attribute
+                        $imageParts = explode(', ', $productImage);
+                        $productImage = trim(str_replace('"', '', $imageParts[count($imageParts) - 1]));
+                    } else {
+                        // Fallback to src if data-srcset is not available
+                        $productImage = $imgElement->getAttribute('src');
+                    }
+                    break;
+                }
             }
 
             // boton link
@@ -113,9 +110,8 @@ if ($items->length > 0) {
     echo '</div>';
     echo '</div>';
 }
-
-
 ?>
+
 
 
 <!-- footer -->
