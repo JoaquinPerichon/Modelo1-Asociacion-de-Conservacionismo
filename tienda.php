@@ -71,23 +71,19 @@ if ($items->length > 0) {
                 }
             }
 
-           // imagen
-            $imgElements = $item->getElementsByTagName('img');
-            foreach ($imgElements as $imgElement) {
-                if ($imgElement->hasAttribute('class') && strpos($imgElement->getAttribute('class'), 'js-item-image') !== false) {
-                    if ($imgElement->hasAttribute('data-srcset')) {
-                        $productImage = $imgElement->getAttribute('data-srcset');
-                        // Extract the actual image URL from the data-srcset attribute
-                        $imageParts = explode(', ', $productImage);
-                        $productImage = trim(str_replace('"', '', $imageParts[count($imageParts) - 1]));
-                    } else {
-                        // Fallback to src if data-srcset is not available
-                        $productImage = $imgElement->getAttribute('src');
-                    }
-                    break;
-                }
-            }
-
+  // Obtener la imagen de la etiqueta img con el atributo data-srcset
+$imgElements = $item->getElementsByTagName('img');
+foreach ($imgElements as $imgElement) {
+    if ($imgElement->hasAttribute('class') && strpos($imgElement->getAttribute('class'), 'js-item-image') !== false) {
+        if ($imgElement->hasAttribute('src')) {
+            $productImage = $imgElement->getAttribute('src');
+            // Extraer la URL de la imagen actual del atributo data-srcset
+            $imageParts = explode(', ', $productImage);
+            $productImage = trim(str_replace('"', '', $imageParts[count($imageParts) - 1]));
+        } 
+        break;
+    }
+}
             // boton link
             $aElements = $item->getElementsByTagName('a');
             if ($aElements->length > 0) {
